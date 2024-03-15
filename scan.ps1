@@ -2,7 +2,7 @@ $dpi = $args[0] -as [int]
 $width = $args[1] -as [float]
 $height = $args[2] -as [float]
 
-$quality = 85
+$quality = 80
 
 ### access the scanner
 $deviceManager = new-object -ComObject WIA.DeviceManager
