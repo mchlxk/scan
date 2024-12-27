@@ -1,6 +1,12 @@
 $dpi = $args[0] -as [int]
-$width = $args[1] -as [float]
-$height = $args[2] -as [float]
+$widthMm = $args[1] -as [float]
+$heightMm = $args[2] -as [float]
+
+$widthPx = [math]::floor($widthMm * $dpi / 25.4)
+$heightPx = [math]::floor($heightMm * $dpi / 25.4)
+
+$widthPx = [math]::min($widthPx, $dpi * 210)
+$heightPx = [math]::min($heightPx, $dpi * 297)
 
 $quality = 80
 
@@ -23,12 +29,7 @@ $device.Items(1).Properties("6148").Value = $dpi   # vertical DPI
 $device.Items(1).Properties("6149").Value = 0  # x point where to start scan
 $device.Items(1).Properties("6150").Value = 0  # y point where to start scan
 
-### scan width
-$widthPx = [math]::floor($width * $dpi * 210 / 25.4)
 $device.Items(1).Properties("6151").Value = [int]$widthPx 
-
-### scan height
-$heightPx = [math]::floor($height * $dpi * 297 / 25.4)
 $device.Items(1).Properties("6152").Value = [int]$heightPx 
 
 # $device.Items(1).Properties("6146").Value = 2   # colors
