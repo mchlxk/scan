@@ -1,1 +1,1 @@
-powershell.exe -ExecutionPolicy ByPass -File scan.ps1 300 105 148
+powershell.exe -ExecutionPolicy ByPass -File scan.ps1 300 148 210
