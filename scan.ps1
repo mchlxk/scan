@@ -21,19 +21,18 @@ if( $deviceManager.DeviceInfos.Count -eq 0)
 $device = $deviceManager.DeviceInfos.Item(1).Connect()
 
 
-#---------------------
+#-------------------
 
 # https://docs.microsoft.com/en-us/windows/win32/wia/-wia-wia-property-constant-definitions
 # https://github.com/tpn/winsdk-7/blob/master/v7.1A/Include/WiaDef.h
+# https://stackoverflow.com/questions/25371269/scan-automation-with-powershell-and-wia-how-to-set-png-as-image-type
 
 
 # horizontal DPI
 $device.Items(1).Properties("6147").Value = $dpi
 
-
 # vertical DPI
 $device.Items(1).Properties("6148").Value = $dpi
-
 
 # X/Y pivot
 $device.Items(1).Properties("6149").Value = 0
@@ -64,17 +63,13 @@ $device.Items(1).Properties("6155").Value = 0
 # https://learn.microsoft.com/en-us/windows-hardware/drivers/image/wia-ips-brightness
 $device.Items(1).Properties("6154").Value = 0
 
-
-#---------------------
+#-------------------
 
 $wiaFormatBmp  = "{B96B3CAB-0728-11D3-9D7B-0000F81EF32E}"
 $wiaFormatPng  = "{B96B3CAF-0728-11D3-9D7B-0000F81EF32E}"
 $wiaFormatGif  = "{B96B3CB0-0728-11D3-9D7B-0000F81EF32E}"
 $wiaFormatJpeg = "{B96B3CAE-0728-11D3-9D7B-0000F81EF32E}"
 $wiaFormatTiff = "{B96B3CB1-0728-11D3-9D7B-0000F81EF32E}"
-
-
-# https://stackoverflow.com/questions/25371269/scan-automation-with-powershell-and-wia-how-to-set-png-as-image-type
 
 
 foreach ($item in $device.Items)
